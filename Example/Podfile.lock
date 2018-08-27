@@ -1,0 +1,16 @@
+PODS:
+  - Gab (0.1.0)
+
+DEPENDENCIES:
+  - Gab (from `../`)
+
+EXTERNAL SOURCES:
+  Gab:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Gab: b4229467a85843335e9c6b95625133e873c7e855
+
+PODFILE CHECKSUM: 77390b443ff69a1f3f9e3aacc3fc09ca0270e6e9
+
+COCOAPODS: 1.5.2

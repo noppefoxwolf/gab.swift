@@ -7,18 +7,19 @@
 //
 
 import UIKit
+import Gab
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+  let gab = Gab(username: "username", password: "password")
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    gab.fetch(success: {
+      print("authorized!")
+      self.gab.postPosts(body: "Hello world!!")
+    }) { (error) in
+      print(error)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+  }
 }
 
