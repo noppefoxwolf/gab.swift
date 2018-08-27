@@ -1,4 +1,4 @@
-# Gab
+# gab.swift
 
 [![CI Status](https://img.shields.io/travis/noppefoxwolf/Gab.svg?style=flat)](https://travis-ci.org/noppefoxwolf/Gab)
 [![Version](https://img.shields.io/cocoapods/v/Gab.svg?style=flat)](https://cocoapods.org/pods/Gab)
@@ -17,7 +17,7 @@ Gab is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Gab'
+pod 'gab.swift'
 ```
 
 ## Author
