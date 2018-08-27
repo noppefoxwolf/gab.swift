@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Gab_Example' do
+  pod 'Gab', :path => '../'
+
+  target 'Gab_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
