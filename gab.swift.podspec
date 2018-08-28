@@ -11,7 +11,7 @@ Unofficial wrapper for gab.ai api, uses email & password for login
   s.source           = { :git => 'https://github.com/noppefoxwolf/gab.swift.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/noppefoxwolf'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'Gab/Classes/**/*'
 end

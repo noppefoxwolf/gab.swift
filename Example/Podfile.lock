@@ -1,16 +1,16 @@
 PODS:
-  - Gab (0.1.0)
+  - gab.swift (0.1.0)
 
 DEPENDENCIES:
-  - Gab (from `../`)
+  - gab.swift (from `../`)
 
 EXTERNAL SOURCES:
-  Gab:
+  gab.swift:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Gab: b4229467a85843335e9c6b95625133e873c7e855
+  gab.swift: 3aac9e518daf347c8c74b8c12c8877880c51b9fb
 
-PODFILE CHECKSUM: 77390b443ff69a1f3f9e3aacc3fc09ca0270e6e9
+PODFILE CHECKSUM: 5d9cb46c270f2e009d38c31af5b980f51430a93b
 
 COCOAPODS: 1.5.2
