@@ -18,7 +18,7 @@ extension Gab {
     components.queryItems = params.map({ URLQueryItem(name: $0.key, value: String(describing: $0.value)) })
     var request = URLRequest(url: components.url!)
     request.httpMethod = "GET"
-    request.allHTTPHeaderFields = allHeaderFields
+    request.allHTTPHeaderFields = signature?.allHeaderFields
     URLSession(configuration: configuration).dataTask(with: request, completionHandler: { (data, response, error) in
       guard let response = response as? HTTPURLResponse else {
         //TODO: return custom error
@@ -53,7 +53,7 @@ extension Gab {
     components.queryItems = params.map({ URLQueryItem(name: $0.key, value: String(describing: $0.value)) })
     var request = URLRequest(url: components.url!)
     request.httpMethod = "POST"
-    request.allHTTPHeaderFields = allHeaderFields
+    request.allHTTPHeaderFields = signature?.allHeaderFields
     URLSession(configuration: configuration).dataTask(with: request, completionHandler: { (data, response, error) in
       guard let response = response as? HTTPURLResponse else {
         //TODO: return custom error

@@ -8,29 +8,27 @@
 
 import UIKit
 import gab_swift
+import WebKit
 
 class ViewController: UITableViewController {
-  let gab = Gab(username: "", password: "")
+  private var gab: Gab? = nil
   private var feed: Feed? = nil
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    gab.authorize(success: {
-      print("authorized!")
-    }) { (error) in
-      print(error)
-    }
-    
     let refreshControl = UIRefreshControl()
     refreshControl.addTarget(self, action: #selector(pullToRefreshed), for: .valueChanged)
     tableView.refreshControl = refreshControl
     
     let right = UIBarButtonItem(title: "Post", style: .plain, target: self, action: #selector(rightBarButtonTapped))
     navigationItem.rightBarButtonItem = right
+    
+    let left = UIBarButtonItem(title: "Auth", style: .plain, target: self, action: #selector(leftBarButtonTapped))
+    navigationItem.leftBarButtonItem = left
   }
   
   @objc private func pullToRefreshed(_ sender: UIRefreshControl) {
-    gab.getFeed(success: { [weak self] (feed) in
+    gab?.getFeed(success: { [weak self] (feed) in
       self?.feed = feed
       DispatchQueue.main.async { [weak self] in
         self?.tableView.reloadData()
@@ -44,6 +42,14 @@ class ViewController: UITableViewController {
     }
   }
   
+  @objc private func leftBarButtonTapped(_ sender: UIBarButtonItem) {
+    AuthorizeViewController.authorize(self, success: { [weak self] (signature) in
+      self?.gab = Gab(username: "", password: "", signature: signature)
+    }) { (error) in
+      print(error)
+    }
+  }
+  
   @objc private func rightBarButtonTapped(_ sender: UIBarButtonItem) {
     let alert = UIAlertController(title: "Post", message: nil, preferredStyle: .alert)
     alert.addTextField { (_) in
@@ -52,7 +58,7 @@ class ViewController: UITableViewController {
     alert.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
     alert.addAction(.init(title: "Send", style: .default, handler: { [weak self] (_) in
       guard let text = alert.textFields?.first?.text else { return }
-      self?.gab.postPosts(body: text)
+      self?.gab?.postPosts(body: text)
     }))
     present(alert, animated: true, completion: nil)
   }

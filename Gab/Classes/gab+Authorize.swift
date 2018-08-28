@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 extension Gab {
   public func authorize(success: (() -> Void)? = nil,
                         failure: ((Error) -> Void)? = nil) {
@@ -67,7 +68,7 @@ extension Gab {
         failure?(NSError())
         return
       }
-      self?.allHeaderFields = allHeaderFields
+      self?.signature = Signature(allHeaderFields: allHeaderFields)
       success?()
     }).resume()
   }

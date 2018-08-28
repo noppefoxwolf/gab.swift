@@ -7,10 +7,15 @@
 
 import Foundation
 
+public struct Signature {
+  public let allHeaderFields: [String : String]
+}
+
+
 public class Gab: NSObject {
   internal let username: String
   internal let password: String
-  internal var allHeaderFields: [String : String]? = nil
+  internal var signature: Signature? = nil
   internal let configuration = URLSessionConfiguration.ephemeral
   
   public init(username: String, password: String) {
@@ -19,8 +24,15 @@ public class Gab: NSObject {
     super.init()
   }
   
+  public init(username: String, password: String, signature: Signature) {
+    self.username = username
+    self.password = password
+    self.signature = signature
+    super.init()
+  }
+  
   public var authorized: Bool {
     //TODO: check expired
-    return allHeaderFields != nil
+    return signature != nil
   }
 }
