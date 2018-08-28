@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'gab.swift'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'Unofficial wrapper for gab.ai api, uses email & password for login'
   s.description      = <<-DESC
 Unofficial wrapper for gab.ai api, uses email & password for login
